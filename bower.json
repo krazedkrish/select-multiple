@@ -1,0 +1,13 @@
+{
+  "name": "select-multiple",
+  "version": "0.1",
+  "description" : "An awesome user-friendlier drop-in replacement for the standard select with multiple attribute activated.",
+  "license" : "MIT",
+  "main": [
+    "./css/multi-select.css",
+    "./js/jquery.multi-select.js"
+  ],
+  "dependencies" : {
+    "jquery" : ">= 1.8"
+  }
+}
