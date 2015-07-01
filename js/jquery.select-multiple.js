@@ -364,7 +364,7 @@
         // selections.addClass('ms-selected').show();
 
         if (options.prop('selected') == true) {
-          that.deselect(value);
+          that.deselect(value, method);
           return;
         }
 
@@ -403,7 +403,7 @@
       }
     },
 
-    'deselect' : function(value){
+    'deselect' : function(value, method){
       if (typeof value === 'string'){ value = [value]; }
 
       var that = this,
@@ -436,11 +436,12 @@
         //   }
         // });
       }
-      ms.trigger('change');
-      if (typeof that.options.afterDeselect === 'function') {
-        that.options.afterDeselect.call(this, value);
+      if (method !== 'init'){
+        ms.trigger('change');
+        if (typeof that.options.afterDeselect === 'function') {
+          that.options.afterDeselect.call(this, value);
+        }
       }
-      // }
     },
 
     'select_all' : function(){
