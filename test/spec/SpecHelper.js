@@ -2,15 +2,15 @@ var select;
 var msContainer;
 
 beforeEach(function() {
-  $('<select id="multi-select" multiple="multiple" name="test[]"></select>').appendTo('body');
+  $('<select id="select-multiple" multiple="multiple" name="test[]"></select>').appendTo('body');
   for (var i=1; i <= 10; i++) {
-    $('<option value="value'+i+'">text'+i+'</option>').appendTo($("#multi-select"));
+    $('<option value="value'+i+'">text'+i+'</option>').appendTo($("#select-multiple"));
   };
-  select = $("#multi-select");
+  select = $("#select-multiple");
 });
 
 afterEach(function () {
-  $("#multi-select, #multi-select-optgroup, .ms-container").remove();
+  $("#select-multiple, #select-multiple-optgroup, .ms-container").remove();
 });
 
 sanitize = function(value){

@@ -1,12 +1,11 @@
 /*
-* MultiSelect v0.9.11
-* Copyright (c) 2012 Louis Cuny
+* SelectMultiple v0.1
+* Copyright (c) 2015 krazedkrish( Shalil Awaley )
 *
 * This program is free software. It comes without any warranty, to
 * the extent permitted by applicable law. You can redistribute it
-* and/or modify it under the terms of the Do What The Fuck You Want
-* To Public License, Version 2, as published by Sam Hocevar. See
-* http://sam.zoy.org/wtfpl/COPYING for more details.
+* and/or modify it under the terms of the MIT LICENSE.
+* See https://en.wikipedia.org/wiki/MIT_License for more details.
 */
 
 !function ($) {
@@ -14,10 +13,10 @@
   "use strict";
 
 
- /* MULTISELECT CLASS DEFINITION
+ /* SELECTMULTIPLE CLASS DEFINITION
   * ====================== */
 
-  var MultiSelect = function (element, options) {
+  var SelectMultiple = function (element, options) {
     this.options = options;
     this.$element = $(element);
     this.$container = $('<div/>', { 'class': "ms-container" });
@@ -29,8 +28,8 @@
     this.elemsSelector = 'li';
   };
 
-  MultiSelect.prototype = {
-    constructor: MultiSelect,
+  SelectMultiple.prototype = {
+    constructor: SelectMultiple,
 
     init: function(){
       var that = this,
@@ -38,7 +37,7 @@
 
       if (ms.next('.ms-container').length === 0){
         ms.css({ position: 'absolute', left: '-9999px' });
-        ms.attr('id', ms.attr('id') ? ms.attr('id') : Math.ceil(Math.random()*1000)+'multiselect');
+        ms.attr('id', ms.attr('id') ? ms.attr('id') : Math.ceil(Math.random()*1000)+'selectmultiple');
         this.$container.attr('id', 'ms-'+ms.attr('id'));
         this.$container.addClass(that.options.cssClass);
         ms.find('option').each(function(){
@@ -336,13 +335,13 @@
 
     'refresh' : function() {
       this.destroy();
-      this.$element.multiSelect(this.options);
+      this.$element.selectMultiple(this.options);
     },
 
     'destroy' : function(){
       $("#ms-"+this.$element.attr("id")).remove();
       this.$element.css('position', '').css('left', '')
-      this.$element.removeData('multiselect');
+      this.$element.removeData('selectmultiple');
     },
 
     'select' : function(value, method){
@@ -495,19 +494,19 @@
     }
   };
 
-  /* MULTISELECT PLUGIN DEFINITION
+  /* SELECTMULTIPLE PLUGIN DEFINITION
    * ======================= */
 
-  $.fn.multiSelect = function () {
+  $.fn.selectMultiple = function () {
     var option = arguments[0],
         args = arguments;
 
     return this.each(function () {
       var $this = $(this),
-          data = $this.data('multiselect'),
-          options = $.extend({}, $.fn.multiSelect.defaults, $this.data(), typeof option === 'object' && option);
+          data = $this.data('selectmultiple'),
+          options = $.extend({}, $.fn.selectMultiple.defaults, $this.data(), typeof option === 'object' && option);
 
-      if (!data){ $this.data('multiselect', (data = new MultiSelect(this, options))); }
+      if (!data){ $this.data('selectmultiple', (data = new SelectMultiple(this, options))); }
 
       if (typeof option === 'string'){
         data[option](args[1]);
@@ -517,7 +516,7 @@
     });
   };
 
-  $.fn.multiSelect.defaults = {
+  $.fn.selectMultiple.defaults = {
     keySelect: [32],
     selectableOptgroup: false,
     disabledClass : 'disabled',
@@ -526,7 +525,7 @@
     cssClass: ''
   };
 
-  $.fn.multiSelect.Constructor = MultiSelect;
+  $.fn.selectMultiple.Constructor = SelectMultiple;
 
   $.fn.insertAt = function(index, $parent) {
     return this.each(function() {

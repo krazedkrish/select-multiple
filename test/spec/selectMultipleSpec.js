@@ -1,14 +1,14 @@
-describe("multiSelect", function() {
+describe("selectMultiple", function() {
 
   describe('init', function(){
     it ('should be chainable', function(){
-      select.multiSelect().addClass('chainable');
+      select.selectMultiple().addClass('chainable');
       expect(select.hasClass('chainable')).toBeTruthy();
     });
     describe('without options', function(){
 
       beforeEach(function() {
-        select.multiSelect();
+        select.selectMultiple();
         msContainer = select.next();
       });
 
@@ -49,7 +49,7 @@ describe("multiSelect", function() {
         firstOption.prop('selected', true);
         lastOption.prop('selected', true);
         selectedValues.push(firstOption.val(), lastOption.val());
-        select.multiSelect();
+        select.selectMultiple();
         msContainer = select.next();
       });
 
@@ -65,12 +65,12 @@ describe("multiSelect", function() {
       var selectedValues = ['value1', 'value2', 'value3'];
 
       beforeEach(function() {
-        $('#multi-select').find('option')
+        $('#select-multiple').find('option')
           .first().prop('selected', true).prop('disabled', true)
           .next().prop('selected', true)
           .next().prop('selected', true).prop('disabled', true)
         ;
-        $('#multi-select').multiSelect();
+        $('#select-multiple').selectMultiple();
       })
 
       it ('should select the disabled pre-selected options', function(){
@@ -85,12 +85,12 @@ describe("multiSelect", function() {
       var selectedValues = ['value1', 'value3'];
 
       beforeEach(function() {
-        $('#multi-select').find('option')
+        $('#select-multiple').find('option')
           .first().prop('selected', true)
           .next().prop('disabled', true)
           .next().prop('selected', true)
         ;
-        $('#multi-select').multiSelect();
+        $('#select-multiple').selectMultiple();
       })
 
       it ('should not select the disabled non-selected options', function(){
@@ -106,9 +106,9 @@ describe("multiSelect", function() {
 
     describe('destroy multi select', function(){
       beforeEach(function(){
-        select.multiSelect();
+        select.selectMultiple();
         msContainer = select.next();
-        select.multiSelect('destroy');
+        select.selectMultiple('destroy');
       });
 
       it('should show the original select', function(){
@@ -116,7 +116,7 @@ describe("multiSelect", function() {
         expect(select.css('left')).not.toBe('-9999px');
       });
 
-      it('should destroy the multiSelect container', function(){
+      it('should destroy the selectMultiple container', function(){
         expect(select.next().size()).toEqual(0);
       });
     });
@@ -126,22 +126,22 @@ describe("multiSelect", function() {
     var optgroupMsContainer, optgroupSelect, optgroupLabels;
 
     beforeEach(function() {
-      $('<select id="multi-select-optgroup" multiple="multiple" name="testy[]"></select>').appendTo('body');
+      $('<select id="select-multiple-optgroup" multiple="multiple" name="testy[]"></select>').appendTo('body');
       for (var o=1; o <= 10; o++) {
         var optgroup = $('<optgroup label="opgroup'+o+'"></optgroup>')
         for (var i=1; i <= 10; i++) {
           var value = i + (o * 10);
           $('<option value="value'+value+'">text'+value+'</option>').appendTo(optgroup);
         };
-        optgroup.appendTo($("#multi-select-optgroup"));
+        optgroup.appendTo($("#select-multiple-optgroup"));
       }
-      optgroupSelect = $("#multi-select-optgroup");
+      optgroupSelect = $("#select-multiple-optgroup");
     });
 
     describe('init', function(){
       describe('with selectableOptgroup option set to false', function(){
         beforeEach(function(){
-          optgroupSelect.multiSelect({ selectableOptgroup: false });
+          optgroupSelect.selectMultiple({ selectableOptgroup: false });
           optgroupMsContainer = optgroupSelect.next();
           optgroupLabels = optgroupMsContainer.find('.ms-selectable .ms-optgroup-label');
         });
@@ -159,7 +159,7 @@ describe("multiSelect", function() {
 
       describe('with selectableOptgroup option set to true', function(){
         beforeEach(function(){
-          optgroupSelect.multiSelect({ selectableOptgroup: true });
+          optgroupSelect.selectMultiple({ selectableOptgroup: true });
           optgroupMsContainer = optgroupSelect.next();
           optgroupLabels = optgroupMsContainer.find('.ms-selectable .ms-optgroup-label');
         });
@@ -179,8 +179,8 @@ describe("multiSelect", function() {
     describe('multiple values (Array)', function(){
       var values = ['value1', 'value2', 'value7'];
       beforeEach(function(){
-        $('#multi-select').multiSelect();
-        $('#multi-select').multiSelect('select', values);
+        $('#select-multiple').selectMultiple();
+        $('#select-multiple').selectMultiple('select', values);
       });
       
       it('should select corresponding option', function(){
@@ -192,8 +192,8 @@ describe("multiSelect", function() {
       var value = 'value1';
 
       beforeEach(function(){
-        $('#multi-select').multiSelect();
-        $('#multi-select').multiSelect('select', value);
+        $('#select-multiple').selectMultiple();
+        $('#select-multiple').selectMultiple('select', value);
       });
 
       it('should select corresponding option', function(){
@@ -205,7 +205,7 @@ describe("multiSelect", function() {
       var clickedItem, value;
 
       beforeEach(function() {
-        $('#multi-select').multiSelect();
+        $('#select-multiple').selectMultiple();
         clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
         spyOnEvent(select, 'change');
@@ -226,11 +226,11 @@ describe("multiSelect", function() {
       });
 
       it('should trigger the original select change event', function(){
-        expect('change').toHaveBeenTriggeredOn("#multi-select");
+        expect('change').toHaveBeenTriggeredOn("#select-multiple");
       });
 
       afterEach(function(){
-        select.multiSelect('deselect_all');
+        select.selectMultiple('deselect_all');
       });
     });
 
@@ -238,8 +238,8 @@ describe("multiSelect", function() {
       var clickedItem, value;
 
       beforeEach(function() {
-        $('#multi-select').find('option').first().prop('disabled', true);
-        $('#multi-select').multiSelect();
+        $('#select-multiple').find('option').first().prop('disabled', true);
+        $('#select-multiple').selectMultiple();
         clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
         spyOnEvent(select, 'change');
@@ -264,11 +264,11 @@ describe("multiSelect", function() {
       });
 
       it('should not trigger the original select change event', function(){
-        expect('change').not.toHaveBeenTriggeredOn("#multi-select");
+        expect('change').not.toHaveBeenTriggeredOn("#select-multiple");
       });
 
       afterEach(function(){
-        select.multiSelect('deselect_all');
+        select.selectMultiple('deselect_all');
       });
     });
   });
@@ -278,9 +278,9 @@ describe("multiSelect", function() {
       var selectedValues = ['value1', 'value2', 'value7'],
           deselectValues = ['value1', 'value2'];
       beforeEach(function(){
-        $('#multi-select').multiSelect();
-        $('#multi-select').multiSelect('select', selectedValues);
-        $('#multi-select').multiSelect('deselect', deselectValues);
+        $('#select-multiple').selectMultiple();
+        $('#select-multiple').selectMultiple('select', selectedValues);
+        $('#select-multiple').selectMultiple('deselect', deselectValues);
       });
       
       it('should select corresponding option', function(){
@@ -293,9 +293,9 @@ describe("multiSelect", function() {
           deselectValue = 'value2';
 
       beforeEach(function(){
-        $('#multi-select').multiSelect();
-        $('#multi-select').multiSelect('select', selectedValues);
-        $('#multi-select').multiSelect('deselect', deselectValue);
+        $('#select-multiple').selectMultiple();
+        $('#select-multiple').selectMultiple('select', selectedValues);
+        $('#select-multiple').selectMultiple('deselect', deselectValue);
       });
 
       it('should select corresponding option', function(){
@@ -308,8 +308,8 @@ describe("multiSelect", function() {
       var correspondingSelectableItem;
 
       beforeEach(function() {
-        $('#multi-select').find('option').first().prop('selected', true);
-        $('#multi-select').multiSelect();
+        $('#select-multiple').find('option').first().prop('selected', true);
+        $('#select-multiple').selectMultiple();
 
         clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
@@ -336,11 +336,11 @@ describe("multiSelect", function() {
       });
 
       it('should trigger the original select change event', function(){
-        expect('change').toHaveBeenTriggeredOn("#multi-select");
+        expect('change').toHaveBeenTriggeredOn("#select-multiple");
       });
 
       afterEach(function(){
-        select.multiSelect('deselect_all');
+        select.selectMultiple('deselect_all');
       });
     });
 
@@ -349,8 +349,8 @@ describe("multiSelect", function() {
       var correspondingSelectableItem;
 
       beforeEach(function() {
-        $('#multi-select').find('option').first().prop('selected', true).prop('disabled', true);
-        $('#multi-select').multiSelect();
+        $('#select-multiple').find('option').first().prop('selected', true).prop('disabled', true);
+        $('#select-multiple').selectMultiple();
 
         clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
@@ -377,11 +377,11 @@ describe("multiSelect", function() {
       });
 
       it('should not trigger the original select change event', function(){
-        expect('change').not.toHaveBeenTriggeredOn("#multi-select");
+        expect('change').not.toHaveBeenTriggeredOn("#select-multiple");
       });
 
       afterEach(function(){
-        select.multiSelect('deselect_all');
+        select.selectMultiple('deselect_all');
       });
     });
   });
