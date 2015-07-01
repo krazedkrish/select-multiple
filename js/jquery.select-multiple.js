@@ -26,7 +26,7 @@
     this.$selectableUl = $('<ul/>', { 'class': "ms-list", 'tabindex' : '-1' });
     // this.$selectionUl = $('<ul/>', { 'class': "ms-list", 'tabindex' : '-1' });
     this.scrollTo = 0;
-    this.elemsSelector = 'li:visible:not(.ms-optgroup-label,.ms-optgroup-container,.'+options.disabledClass+')';
+    this.elemsSelector = 'li';
   };
 
   MultiSelect.prototype = {
@@ -118,16 +118,17 @@
         .addClass('ms-elem-selectable')
         .attr('id', elementId+'-selectable');
 
+      // .addClass('ms-selected').children('.ms-elem-selected').show();
       // selectedLi
       //   .data('ms-value', value)
       //   .addClass('ms-elem-selection')
       //   .attr('id', elementId+'-selection')
       //   .hide();
 
-      // if ($option.prop('disabled') || ms.prop('disabled')){
-      //   // selectedLi.addClass(that.options.disabledClass);
-      //   selectableLi.addClass(that.options.disabledClass);
-      // }
+      if ($option.prop('disabled') || ms.prop('disabled')){
+        // selectedLi.addClass(that.options.disabledClass);
+        selectableLi.addClass(that.options.disabledClass);
+      }
 
       var $optgroup = $option.parent('optgroup');
 
@@ -356,6 +357,8 @@
 
       if (method === 'init'){
         selectables = this.$selectableUl.find('#' + msIds.join('-selectable, #')+'-selectable');
+        selectables.children('.ms-elem-selected').show();
+        return;
         // selections = this.$selectionUl.find('#' + msIds.join('-selection, #') + '-selection');
       }
 
