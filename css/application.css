@@ -1,0 +1,98 @@
+h1{
+  margin: 0;
+  padding: 0;
+  line-height: 0.5em;
+}
+.navbar .brand{
+  padding: 9px 20px 8px;
+}
+
+.navbar iframe{
+  float: left;
+  margin: 10px 0px 0px 1em;
+}
+
+.brand span{
+  font-size: 0.6em;
+  color: #aaa;
+}
+
+.hero-unit .ms-container ul.ms-list{
+  height: 250px;
+}
+
+ .hero-unit .ms-container{
+  background-position: 170px 110px;
+}
+
+.hero-unit ul.describe{
+  float: left;
+  list-style-type: none;
+  list-style-image: url(../img/check.png);
+  margin-left: 3em;
+}
+
+.hero-unit ul.describe li{
+  padding-left: 0.5em;
+}
+
+.hero-unit p{
+  font-size: 1.5em;
+  text-align: center;
+  margin: 1em 0em 2em;
+  line-height: 1.5em;
+}
+
+.hero-selectmultiple{
+  float: right;
+}
+
+#contributors ul{
+  margin: 0;
+}
+
+#contributors li{
+  list-style-type: none;
+  padding: 5px 0px;
+}
+
+#contributors img{
+  border: 1px #ddd solid;
+  padding: 1px;
+}
+
+ul.contribute li{
+  padding: 5px 0px;
+  font-size: 15px;
+}
+
+.custom-header{
+  text-align: center;
+  padding: 3px;
+  background: #000;
+  color: #fff;
+}
+
+h2{
+  margin-top: 2em;
+}
+
+h3{
+  margin: 1em 0;
+}
+
+h4{
+  margin-top: 2em;
+}
+
+#ms-searchable.ms-container{
+  background-position: 168px 110px;
+}
+
+input.search-input{
+  box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  width: 100%;
+  margin-bottom: 5px;
+  height: auto;
+}
