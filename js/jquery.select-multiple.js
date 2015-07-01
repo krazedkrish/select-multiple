@@ -358,7 +358,7 @@
       if (method === 'init'){
         selectables = this.$selectableUl.find('#' + msIds.join('-selectable, #')+'-selectable');
         selectables.children('.ms-elem-selected').show();
-        return;
+//        return;
         // selections = this.$selectionUl.find('#' + msIds.join('-selection, #') + '-selection');
       }
 
@@ -366,7 +366,7 @@
         selectables.addClass('ms-selected').children('.ms-elem-selected').show();
         // selections.addClass('ms-selected').show();
 
-        if (options.prop('selected') == true) {
+        if (method !== 'init' && options.prop('selected') == true) {
           that.deselect(value, method);
           return;
         }
@@ -417,8 +417,8 @@
           options = ms.find('option').filter(function(){ return($.inArray(this.value, value) > -1); });
 
       // if (selections.length > 0){
-      selectables.addClass('ms-selected').children('.ms-elem-selected').hide();
-      // selectables.removeClass('ms-selected').show();
+      //selectables.addClass('ms-selected').children('.ms-elem-selected').hide();
+      selectables.removeClass('ms-selected').children('.ms-elem-selected').hide();
       // selections.removeClass('ms-selected').hide();
       options.prop('selected', false);
 

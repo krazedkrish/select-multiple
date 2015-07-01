@@ -213,8 +213,8 @@ describe("multiSelect", function() {
         clickedItem.trigger('click');
       });
 
-      it('should hide selected item', function(){
-        expect(clickedItem).toBeHidden();
+      it('should show check mark', function(){
+        expect(clickedItem.children('.ms-elem-selected')).toBe(':visible');
       });
 
       it('should add the .ms-selected class to the selected item', function(){
@@ -223,10 +223,6 @@ describe("multiSelect", function() {
 
       it('should select corresponding option', function(){
         expect(select.find('option[value="'+value+'"]')).toBeSelected();
-      });
-
-      it('should show the associated selected item', function(){
-        expect($('#'+sanitize(value)+'-selection')).toBe(':visible');
       });
 
       it('should trigger the original select change event', function(){
@@ -315,7 +311,7 @@ describe("multiSelect", function() {
         $('#multi-select').find('option').first().prop('selected', true);
         $('#multi-select').multiSelect();
 
-        clickedItem = $('.ms-selection ul.ms-list li').first();
+        clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
         correspondingSelectableItem = $('.ms-selection ul.ms-list li').first();
         spyOnEvent(select, 'change');
@@ -323,8 +319,8 @@ describe("multiSelect", function() {
         clickedItem.trigger('click');
       });
 
-      it ('should hide clicked item', function(){
-        expect(clickedItem).toBe(':hidden');
+      it ('should hide check mark for clicked item', function(){
+        expect(clickedItem.children('.ms-elem-selected')).toBeHidden();
       });
 
       it('should show associated selectable item', function(){
@@ -356,9 +352,9 @@ describe("multiSelect", function() {
         $('#multi-select').find('option').first().prop('selected', true).prop('disabled', true);
         $('#multi-select').multiSelect();
 
-        clickedItem = $('.ms-selection ul.ms-list li').first();
+        clickedItem = $('.ms-selectable ul.ms-list li').first();
         value = clickedItem.data('ms-value');
-        correspondingSelectableItem = $('.ms-selection ul.ms-list li').first();
+        correspondingSelectableItem = $('.ms-selectable ul.ms-list li').first();
         spyOnEvent(select, 'change');
         spyOnEvent(select, 'focus');
         clickedItem.trigger('click');
