@@ -1,6 +1,6 @@
 {
   "name": "select-multiple",
-  "version": "0.1",
+  "version": "0.1.1",
   "description" : "An awesome user-friendlier drop-in replacement for the standard select with multiple attribute activated.",
   "license" : "MIT",
   "main": [
@@ -9,5 +9,12 @@
   ],
   "dependencies" : {
     "jquery" : ">= 1.8"
+  },
+  "authors": [
+    { "name": "krazedkrish", "email": "krazedkrish@gmail.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/krazedkrish/select-multiple.git"
   }
 }

@@ -96,6 +96,8 @@
           value = $option.val(),
           elementId = that.sanitize(value);
 
+      selectableLi.children('.ms-elem-selected').hide();
+
       selectableLi
         .data('ms-value', value)
         .addClass('ms-elem-selectable')
@@ -320,7 +322,6 @@
 
       if (method === 'init'){
         selectables = this.$selectableUl.find('#' + msIds.join('-selectable, #')+'-selectable');
-        selectables.children('.ms-elem-selected').show();
       }
 
       if (selectables.length > 0){
@@ -387,7 +388,7 @@
           values = ms.val();
 
       ms.find('option:not(":disabled")').prop('selected', true);
-      this.$selectableUl.find('.ms-elem-selectable').filter(':not(.'+this.options.disabledClass+')').addClass('ms-selected').hide();
+      this.$selectableUl.find('.ms-elem-selectable').filter(':not(.'+this.options.disabledClass+')').addClass('ms-selected').children('.ms-elem-selected').show();
       this.$selectableUl.find('.ms-optgroup-label').hide();
       ms.trigger('change');
       if (typeof this.options.afterSelect === 'function') {
@@ -403,7 +404,7 @@
           values = ms.val();
 
       ms.find('option').prop('selected', false);
-      this.$selectableUl.find('.ms-elem-selectable').removeClass('ms-selected').show();
+      this.$selectableUl.find('.ms-elem-selectable').removeClass('ms-selected').children('.ms-elem-selected').hide();
       this.$selectableUl.find('.ms-optgroup-label').show();
       this.$selectableUl.focus();
       ms.trigger('change');
