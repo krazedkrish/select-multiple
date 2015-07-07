@@ -179,12 +179,6 @@
             e.stopPropagation();
             that.moveHighlight($(this), (e.which === 38) ? -1 : 1);
             return;
-          case 37:
-          case 39:
-            e.preventDefault();
-            e.stopPropagation();
-            that.switchList($list);
-            return;
           case 9:
             if(that.$element.is('[tabindex]')){
               e.preventDefault();
@@ -275,15 +269,6 @@
           this.deselect($highlightedElem.data('ms-value'));
         }
         $elems.removeClass('ms-hover');
-      }
-    },
-
-    'switchList' : function($list){
-      $list.blur();
-      this.$container.find(this.elemsSelector).removeClass('ms-hover');
-      if ($list.parent().hasClass('ms-selectable')){
-      } else {
-        this.$selectableUl.focus();
       }
     },
 
@@ -453,7 +438,6 @@
     selectableOptgroup: false,
     disabledClass : 'disabled',
     dblClick : false,
-    keepOrder: false,
     cssClass: ''
   };
 
