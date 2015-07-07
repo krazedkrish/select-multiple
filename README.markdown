@@ -12,7 +12,7 @@ This is an awesome user-friendlier drop-in replacement for the standard ```<sele
     - Fully customizable via CSS
     - Depends on jQuery 1.8+
     - Tiny code ~8kb minified
-    - [https://github.com/krazedkrish/select-multiple-rails](gem for Rails)
+    - Rails [https://github.com/krazedkrish/select-multiple-rails](gem)
 
 # Usage
 
