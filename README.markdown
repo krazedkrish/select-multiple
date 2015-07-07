@@ -1,7 +1,7 @@
 
 # jquery.select-multiple.js
 
-This is an awesome user-friendlier drop-in replacement for the standard <select> with multiple attribute activated.
+This is an awesome user-friendlier drop-in replacement for the standard ```<select>``` with multiple attribute activated.
 
 # Features
     - Free (under MIT license)
