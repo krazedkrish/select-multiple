@@ -1,3 +1,4 @@
+
 # jquery.select-multiple.js
 
 This is an awesome user-friendlier drop-in replacement for the standard <select> with multiple attribute activated.
@@ -40,8 +41,10 @@ This is an awesome user-friendlier drop-in replacement for the standard <select>
 
 ```javascript
 $('#my-select').selectMultiple()
+```
 
-Options
+### Options
+
 | Name               | type      | default               | description                                                          |
 | ------------------ | --------- | --------------------- | -------------------------------------------------------------------- |
 | afterInit          | function  | function(container){} | Function to call after the selectMultiple initilization.             |
@@ -56,6 +59,7 @@ Options
 
 ### Methods
 
+```javascript
 .selectMultiple(options)
 ```
 
