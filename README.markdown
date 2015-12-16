@@ -15,7 +15,6 @@ This is an awesome user-friendlier drop-in replacement for the standard ```<sele
     - Rails [https://github.com/krazedkrish/select-multiple-rails](gem)
 
 #Dependencies
-    - Bootstrap v2.3.2
     - jQuery 1.8+
 
 # Usage
