@@ -4,18 +4,18 @@
 This is an awesome user-friendlier drop-in replacement for the standard ```<select>``` with multiple attribute activated.
 
 # Features
-    - Free (under MIT license)
-    - Works in an unobtrusive fashion
-    - Fully open sourced
-    - Keyboard support
-    - Provides some callbacks
-    - Fully customizable via CSS
-    - Depends on jQuery 1.8+
-    - Tiny code ~8kb minified
-    - Rails [https://github.com/krazedkrish/select-multiple-rails](gem)
+- Free (under MIT license)
+- Works in an unobtrusive fashion
+- Fully open sourced
+- Keyboard support
+- Provides some callbacks
+- Fully customizable via CSS
+- Depends on jQuery 1.8+
+- Tiny code ~8kb minified
+- Rails [gem](https://github.com/krazedkrish/select-multiple-rails)
 
 #Dependencies
-    - jQuery 1.8+
+- jQuery 1.8+
 
 # Usage
 
@@ -116,22 +116,26 @@ $('#your-select').selectMultiple('refresh');
 ```
 
 Dynamically add option to the selectmultiple.
-The options hash is described bellow:
-key   type  required  desription
-value   String  true  The value of the option to create
-text  String  true  The text of the option to create
-index   Number  false   The index where to insert the option. If none given, it will be inserted as last option.
-nested  String  false   If there are optgroups you can choose under which optgroup you want to insert the option.
+The options hash is described below:
+
+key    |  type  | required | desription
+-------|--------|----------|-------------
+value  | String | true     | The value of the option to create
+text   | String | true     | The text of the option to create
+index  | Number | false    | The index where to insert the option. If none given, it will be inserted as last option.
+nested | String | false    | If there are optgroups you can choose under which optgroup you want to insert the option.
 
 ```javascript
 $('#your-select').selectMultiple('addOption', { value: 'test', text: 'test', index: 0, nested: 'optgroup_label' });
 ```
 
 Keyboard
-key   function
-[  ↓  ]  Down arrow   Select next item in the focused list
-[  ↑  ]  Up arrow   Select previous item in the focused list
-[ — ]  Space  Add/remove item depending on which list is currently focused
+
+key  | function
+-----|---------
+<kbd>↓</kbd> | Down arrow   Select next item in the focused list
+<kbd>↑</kbd> | Up arrow   Select previous item in the focused list
+<kbd>—</kbd> | Space  Add/remove item depending on which list is currently focused
 
 
 ### Pre-selected options
