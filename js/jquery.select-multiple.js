@@ -19,6 +19,7 @@
   var SelectMultiple = function (element, options) {
     this.options = options;
     this.$element = $(element);
+    // console.log(element);
     this.$container = $('<div/>', { 'class': "ms-container" });
     this.$selectableContainer = $('<div/>', { 'class': 'ms-selectable' });
     this.$selectableUl = $('<ul/>', { 'class': "ms-list", 'tabindex' : '-1' });
@@ -28,6 +29,8 @@
 
   SelectMultiple.prototype = {
     constructor: SelectMultiple,
+    shiftKey : false,
+    lastClicked : null,
 
     init: function(){
       var that = this,
@@ -38,8 +41,8 @@
         ms.attr('id', ms.attr('id') ? ms.attr('id') : Math.ceil(Math.random()*1000)+'selectmultiple');
         this.$container.attr('id', 'ms-'+ms.attr('id'));
         this.$container.addClass(that.options.cssClass);
-        ms.find('option').each(function(){
-          that.generateLisFromOption(this);
+        ms.find('option').each(function(index){
+          that.generateLisFromOption(this, index);
         });
 
 
@@ -62,6 +65,34 @@
 
         that.$selectableUl.on(action, '.ms-elem-selectable', function(){
           that.select($(this).data('ms-value'));
+          /*console.log("before count = "+that.lastClicked);
+          console.log(that.$selectableUl.children);
+          console.log($(this).data("count"));*/
+          var justClicked = $(this).data("count");
+          console.log(that.lastClicked);
+          // console.log("after count = "+that.lastClicked);
+          if (that.shiftKey) {
+            var l = parseInt(that.lastClicked),
+                j = parseInt(justClicked);
+            var m = j-l;
+            console.log("j-i = "+j+" "+l);
+            if(j<l) {
+              m = j;
+              
+              j = l;
+              l = m;
+            }
+
+            console.log("j-i = "+j+" "+l);
+            that.$selectableUl.children().each(function (index) {
+              if (index>l && index<j) {
+                console.log(index);
+                that.select($(this).data('ms-value'));
+              };
+            })
+          
+          };
+          that.lastClicked = justClicked;
         });
 
 
@@ -91,7 +122,7 @@
           attributes += attr.name+'="'+attr.value+'" ';
         }
       }
-      var selectableLi = $('<li '+attributes+'><span>'+that.escapeHTML($option.text())+'</span><span class="pull-right ms-elem-selected">✔</span></li>'),
+      var selectableLi = $('<li '+attributes+' data-count="'+index+'"><span>'+that.escapeHTML($option.text())+'</span><span class="pull-right ms-elem-selected">✔</span></li>'),
           selectedLi = selectableLi.clone(),
           value = $option.val(),
           elementId = that.sanitize(value);
@@ -172,12 +203,22 @@
         $(this).removeClass('ms-focus');
       })
       .on('keydown', function(e){
+        // console.log(e.which);
         switch (e.which) {
           case 40:
+            // console.log("arrow clicked");
+            // e.preventDefault();
+            break;
           case 38:
             e.preventDefault();
             e.stopPropagation();
             that.moveHighlight($(this), (e.which === 38) ? -1 : 1);
+            return;
+          case 37:
+          case 39:
+            e.preventDefault();
+            e.stopPropagation();
+            that.switchList($list);
             return;
           case 9:
             if(that.$element.is('[tabindex]')){
@@ -191,6 +232,11 @@
                 that.$element.trigger('focus');
               }
             }
+          case 16:
+            /*added by mjt*/
+            // console.log("mjt shiftKey DOWN");
+            that.shiftKey = true;
+            break;
         }
         if($.inArray(e.which, that.options.keySelect) > -1){
           e.preventDefault();
@@ -198,6 +244,13 @@
           that.selectHighlighted($list);
           return;
         }
+      })
+      .on("keyup",function (e) {
+        /*added by mjt*/
+        if (e.which===16) {
+          // console.log("mjt shiftKey UP");
+          that.shiftKey = false;
+        };
       });
     },
 
@@ -272,17 +325,40 @@
       }
     },
 
+    'switchList' : function($list){
+      $list.blur();
+      this.$container.find(this.elemsSelector).removeClass('ms-hover');
+      if ($list.parent().hasClass('ms-selectable')){
+      } else {
+        this.$selectableUl.focus();
+      }
+    },
+
     'activeMouse' : function($list){
       var that = this;
-
+        
       $('body').on('mouseenter', that.elemsSelector, function(){
-        $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');
-        $(this).addClass('ms-hover');
+        console.log(that.shiftKey);
+        if (that.shiftKey) {
+          $(this).addClass('ms-hover');
+        }else{
+          $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');
+          $(this).addClass('ms-hover');
+          // console.log("hello mouse");
+        };
       });
 
       $('body').on('mouseleave', that.elemsSelector, function () {
+        if (that.shiftKey) {
+          return true;
+        }
+        // console.log("hello mouseleave");
           $(this).parents('.ms-container').find(that.elemsSelector).removeClass('ms-hover');;
       });
+
+      that.$container.on("mouseleave",function () {
+        // boolen = false;
+      })
     },
 
     'refresh' : function() {
@@ -298,6 +374,8 @@
 
     'select' : function(value, method){
       if (typeof value === 'string'){ value = [value]; }
+
+      // console.log("hello select");
 
       var that = this,
           ms = this.$element,
@@ -438,6 +516,7 @@
     selectableOptgroup: false,
     disabledClass : 'disabled',
     dblClick : false,
+    keepOrder: false,
     cssClass: ''
   };
 
