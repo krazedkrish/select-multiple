@@ -323,7 +323,7 @@
         if (selectableOptgroups.length > 0){
           selectableOptgroups.each(function(){
             var selectablesLi = $(this).find('.ms-elem-selectable');
-            if (selectablesLi.length === selectablesLi.filter('.ms-selected').length){
+            if (that.options.hideOptGroupLabelOnAllSelected !== false && selectablesLi.length === selectablesLi.filter('.ms-selected').length){
               $(this).find('.ms-optgroup-label').hide();
             }
           });
@@ -374,7 +374,7 @@
 
       ms.find('option:not(":disabled")').prop('selected', true);
       this.$selectableUl.find('.ms-elem-selectable').filter(':not(.'+this.options.disabledClass+')').addClass('ms-selected').children('.ms-elem-selected').show();
-      if(this.options.hideOptGroupLabelOnAllSelected){
+      if(this.options.hideOptGroupLabelOnAllSelected !== false){
          this.$selectableUl.find('.ms-optgroup-label').hide(); 
       }
       ms.trigger('change');
