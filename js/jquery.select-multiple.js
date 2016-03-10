@@ -323,7 +323,7 @@
         if (selectableOptgroups.length > 0){
           selectableOptgroups.each(function(){
             var selectablesLi = $(this).find('.ms-elem-selectable');
-            if (selectablesLi.length === selectablesLi.filter('.ms-selected').length){
+            if (that.options.hideOptGroupLabelOnAllSelected !== false && selectablesLi.length === selectablesLi.filter('.ms-selected').length){
               $(this).find('.ms-optgroup-label').hide();
             }
           });
@@ -374,7 +374,9 @@
 
       ms.find('option:not(":disabled")').prop('selected', true);
       this.$selectableUl.find('.ms-elem-selectable').filter(':not(.'+this.options.disabledClass+')').addClass('ms-selected').children('.ms-elem-selected').show();
-      this.$selectableUl.find('.ms-optgroup-label').hide();
+      if(this.options.hideOptGroupLabelOnAllSelected !== false){
+         this.$selectableUl.find('.ms-optgroup-label').hide(); 
+      }
       ms.trigger('change');
       if (typeof this.options.afterSelect === 'function') {
         var selectedValues = $.grep(ms.val(), function(item){
@@ -438,7 +440,8 @@
     selectableOptgroup: false,
     disabledClass : 'disabled',
     dblClick : false,
-    cssClass: ''
+    cssClass: '',
+    hideOptGroupLabelOnAllSelected: true
   };
 
   $.fn.selectMultiple.Constructor = SelectMultiple;

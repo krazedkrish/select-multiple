@@ -87,3 +87,7 @@
 .ms-container .ms-selectable li span.ms-elem-selected {
   display: none;
 }
+
+.pull-right.ms-elem-selected{
+  float: right;
+}
