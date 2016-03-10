@@ -8,10 +8,10 @@
     "multiple",
     "form"
   ],
-  "version": "0.1",
+  "version": "0.2.0",
   "author": {
     "name": "krazedkrish",
-    "email" : "krazedkrish@gmail.com",
+    "email": "krazedkrish@gmail.com",
     "url": "https://github.com/krazedkrish"
   },
   "maintainers": [
@@ -33,5 +33,18 @@
   "download": "https://github.com/krazedkrish/select-multiple/archive/master.zip",
   "dependencies": {
     "jquery": ">= 1.8"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.7",
+    "karma-jasmine-spec-runner-reporter": "^0.1.5",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-requirejs": "^0.2.5"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start my.conf.js"
   }
 }
