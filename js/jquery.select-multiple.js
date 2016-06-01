@@ -91,7 +91,7 @@
           attributes += attr.name+'="'+attr.value+'" ';
         }
       }
-      var selectableLi = $('<li '+attributes+'><span>'+that.escapeHTML($option.text())+'</span><span class="pull-right ms-elem-selected">✔</span></li>'),
+      var selectableLi = $('<li '+attributes+'><span>'+(that.options.allowHTML === true ? $option.text() : that.escapeHTML($option.text()))+'</span><span class="pull-right ms-elem-selected">✔</span></li>'),
           selectedLi = selectableLi.clone(),
           value = $option.val(),
           elementId = that.sanitize(value);

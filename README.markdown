@@ -59,6 +59,7 @@ $('#my-select').selectMultiple()
 | selectableOptgroup | Boolean   | false                 | Click on optgroup will select all nested options when set to true.   |
 | dblClick           | Boolean   | false                 | Replace the defautl click event to select items by the dblclick one. |
 | cssClass           | String    | ""                    | Add a custom CSS class to the selectmultiple container.              |
+| allowHTML          | Boolean   | false                 | Don't escape items' HTML                                             |
 
 ### Methods
 
