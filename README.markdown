@@ -1,6 +1,8 @@
 
 # jquery.select-multiple.js
 
+[![Join the chat at https://gitter.im/krazedkrish/select-multiple](https://badges.gitter.im/krazedkrish/select-multiple.svg)](https://gitter.im/krazedkrish/select-multiple?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is an awesome user-friendlier drop-in replacement for the standard ```<select>``` with multiple attribute activated.
 
 # Features
