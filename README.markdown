@@ -5,7 +5,10 @@
 
 This is an awesome user-friendlier drop-in replacement for the standard ```<select>``` with multiple attribute activated.
 
-# Features
+## Demos
+[http://krazedkrish.github.io/select-multiple/#demos](http://krazedkrish.github.io/select-multiple/#demos)
+
+## Features
 - Free (under MIT license)
 - Works in an unobtrusive fashion
 - Fully open sourced
@@ -16,10 +19,10 @@ This is an awesome user-friendlier drop-in replacement for the standard ```<sele
 - Tiny code ~8kb minified
 - Rails [gem](https://github.com/krazedkrish/select-multiple-rails)
 
-#Dependencies
+## Dependencies
 - jQuery 1.8+
 
-# Usage
+## Usage
 
 ### HTML
 
@@ -331,11 +334,8 @@ $('.searchable').selectMultiple({
 });
 ```
 
-# Documentation
+## Documentation
 [http://krazedkrish.github.io/select-multiple](http://krazedkrish.github.io/select-multiple)
 
-# Demos
-[http://krazedkrish.github.io/select-multiple/#demos](http://krazedkrish.github.io/select-multiple/#demos)
-
-# References:
+## References:
 Based on https://github.com/lou/multi-select/
